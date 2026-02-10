@@ -86,4 +86,21 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.style.opacity = window.scrollY > 400 ? '1' : '0';
     btn.style.transform = window.scrollY > 400 ? 'translateY(0)' : 'translateY(16px)';
   });
+
+
+  // === BANDEAU COOKIES INFORMATIF ===
+  if (!localStorage.getItem('cookie-banner-dismissed')) {
+    var banner = document.getElementById('cookie-banner');
+    if (banner) {
+      banner.style.display = 'flex';
+      var btn = banner.querySelector('.cookie-btn');
+      if (btn) {
+        btn.addEventListener('click', function() {
+          localStorage.setItem('cookie-banner-dismissed', 'true');
+          banner.style.display = 'none';
+        });
+      }
+    }
+  }
+
 });
